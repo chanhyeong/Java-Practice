@@ -8,15 +8,12 @@ import java.util.stream.IntStream;
 
 public class TestMethodMeasure implements BaseExecutor {
 	public void execute() {
-		new Measure<>()
-			.param(100)
-			.logString("테스트")
-			.block(i -> IntStream.range(0, i)
-				.forEach(System.out::println));
-
 		new Measure<>(100)
 			.logString("2222")
 			.block(this::func);
+
+		Measure<Integer> measure = CommonUtil.getMeasure();
+		measure.param(100).logString("123").block(this::func);
 
 		CommonUtil.getMeasure(Integer.TYPE)
 			.param(100)
@@ -26,8 +23,6 @@ public class TestMethodMeasure implements BaseExecutor {
 		CommonUtil.getMeasure(100)
 			.logString("테스트")
 			.block(this::func);
-
-		CommonUtil.block(100)
 	}
 
 	private <T> void func(int i) {

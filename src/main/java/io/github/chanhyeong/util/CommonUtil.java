@@ -8,6 +8,10 @@ import java.util.function.Function;
 
 public class CommonUtil {
 
+	public static <T> Measure<T> getMeasure() {
+		return new Measure<>();
+	}
+
 	public static <T> Measure<T> getMeasure(Class<T> clazz) {
 		return new Measure<>();
 	}
